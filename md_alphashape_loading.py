@@ -65,6 +65,7 @@ def update_loading_plot(fraction_inside):
 # Setup
 # ----------
 
+# Sample name and data path
 sample_name = "10gcpq_142propofol_pH7_nonwrap"
 data_path = f"data\{sample_name}"
 polymer_file_name = "GCPQ.txt"
