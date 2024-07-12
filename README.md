@@ -18,8 +18,8 @@ Effect of the alpha parameter on the alphashape calculation:
 | alpha=0.01 | alpha=0.1 | alpha=0.5 |
 |:----------:|:---------:|:-------:|
 | Loose fitting | Medium fitting | Tight fitting |
-| ![alpha=0.01](assets\alpha0_01.png) | ![alpha=0.1](assets\alpha0_10.png) | ![alpha=0.5](assets\alpha0_50.png) |
-| ![loading alpha=0.01](assets\alpha0_01_loading.png) | ![loading alpha=0.1](assets\alpha0_10_loading.png) | ![loading alpha=0.5](assets\alpha0_50_loading.png) |
+| ![alpha=0.01](assets/alpha0_01.png) | ![alpha=0.1](assets/alpha0_10.png) | ![alpha=0.5](assets/alpha0_50.png) |
+| ![loading alpha=0.01](assets/alpha0_01_loading.png) | ![loading alpha=0.1](assets/alpha0_10_loading.png) | ![loading alpha=0.5](assets/alpha0_50_loading.png) |
 
 
 ## Outputs
@@ -27,7 +27,7 @@ Effect of the alpha parameter on the alphashape calculation:
 - A plot of the loading curve
 - A gif of the fraction inside changing (if requested)
 
-![example gif](assets\loading.gif)
+![example gif](assets/loading.gif)
 
 As the "fraction inside" increases, the number of drug molecules considered encapsulated (green) decreases, the number of drug molecules considered outside (red) increases, and the encapsulation efficiency decreases.
 
