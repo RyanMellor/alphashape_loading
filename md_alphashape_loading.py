@@ -38,13 +38,13 @@ def load_data_vmd(file_path):
 
 def update_loading_plot(fraction_inside):
     # Plot the loading curve
-    ax_laoding_curve.clear()
-    ax_laoding_curve.plot(np.arange(0, 1.01, 0.01), loading, color='cornflowerblue')
-    ax_laoding_curve.axhline(loading[1], color='crimson', linestyle='--')
-    ax_laoding_curve.axhline(loading[-1], color='crimson', linestyle='--')
-    ax_laoding_curve.axvline(fraction_inside, color='goldenrod', linestyle='--')
-    ax_laoding_curve.set_xlabel('Fraction Inside')
-    ax_laoding_curve.set_ylabel('Encapsulation Efficiency (%)')
+    ax_loading_curve.clear()
+    ax_loading_curve.plot(np.arange(0, 1.01, 0.01), loading, color='cornflowerblue')
+    ax_loading_curve.axhline(loading[1], color='crimson', linestyle='--')
+    ax_loading_curve.axhline(loading[-1], color='crimson', linestyle='--')
+    ax_loading_curve.axvline(fraction_inside, color='goldenrod', linestyle='--')
+    ax_loading_curve.set_xlabel('Fraction Inside')
+    ax_loading_curve.set_ylabel('Encapsulation Efficiency (%)')
 
     # Plot the data in 3D
     ax_3d_view.clear()
@@ -66,7 +66,7 @@ def update_loading_plot(fraction_inside):
 # ----------
 
 # Sample name and data path
-sample_name = "10gcpq_142propofol_pH7_nonwrap"
+sample_name = "10gcpq_142propofol_pH7_wrap"
 data_path = f"data\{sample_name}"
 polymer_file_name = "GCPQ.txt"
 
@@ -111,15 +111,30 @@ for fraction_inside in np.arange(0, 1.01, 0.01):
 # Output
 # ----------
 
+# Save the alpha shape as a png
+# fig = plt.figure(figsize=(6, 6))
+# ax_3d_view = fig.add_subplot(111, projection='3d')
+# ax_3d_view.plot_trisurf(*zip(*alpha_shape.vertices), triangles=alpha_shape.faces, color='cornflowerblue', alpha=0.2)
+# ax_3d_view.scatter(polymer_data['x'], polymer_data['y'], polymer_data['z'], s=0.1, color='grey')
+# plt.savefig(f'data\{sample_name}_alpha{str(alpha_param).replace(".", "_")}.png', dpi=600)
+# ax_3d_view.clear()
+# ax_3d_view.plot_trisurf(*zip(*alpha_shape.vertices), triangles=alpha_shape.faces, color='cornflowerblue', alpha=0.2)
+# for i, drug in enumerate(drug_data):
+#     try:
+#         ax_3d_view.scatter(drug['x'], drug['y'], drug['z'], s=0.1, c='forestgreen' if np.sum(is_inside[i]) / len(is_inside[i]) >= 0.5 else 'crimson')
+#     except:
+#         pass
+# plt.savefig(f'data\{sample_name}_alpha{str(alpha_param).replace(".", "_")}_loading.png', dpi=600)
+# exit()
+
 # Save the loading curve as a csv
 loading_df = pd.DataFrame({'Fraction Inside': np.arange(0, 1.01, 0.01), 'Encapsulation Efficiency (%)': loading})
 loading_df = loading_df.round(2)
 loading_df.to_csv(f'data\{sample_name}_loading.csv', index=False)
 
-
 # Plot the data
 fig = plt.figure(figsize=(12, 6))
-ax_laoding_curve = fig.add_subplot(121)
+ax_loading_curve = fig.add_subplot(121)
 ax_3d_view = fig.add_subplot(122, projection='3d')
 
 # 0.00 corresponds to 0% of the drug being inside the polymer
